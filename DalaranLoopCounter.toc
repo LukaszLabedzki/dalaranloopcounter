@@ -1,0 +1,10 @@
+## Interface: 70000
+## Title: Dalaran Loop Counter
+
+## Version: 0.1
+## Author: Gusrim
+## Notes: Tracks Dalaran loops count and records.
+## SavedVariables: LoopCount, LoopRecord, TotalTime
+
+DalaranLoopCounter.lua
+
