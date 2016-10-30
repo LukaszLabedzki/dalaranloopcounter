@@ -93,18 +93,21 @@ function DLC:ADDON_LOADED()
 end
 
 function DLC_OnUpdate(self, elapsed)
+	inInstance, instanceType = IsInInstance()
+
 	timeSinceLastUpdate = timeSinceLastUpdate + elapsed
 	if (timeSinceLastUpdate > updateInterval) then
 		timeSinceLastUpdate = 0
-		DLC_UpdatePosition()
+		
+		if (not inInstance) then
+			DLC_UpdatePosition()
+		end
 	end
 end
 
 function DLC_UpdatePosition()
 	local px, py = GetPlayerMapPosition("player")
 	if ( px ~= 0 and py ~= 0 ) then
-		MinimapZoneText:SetText( format("(%d:%d) ",px*100.0,py*100.0) .. GetMinimapZoneText() );
-		
 		local gate = false
 		
 		if(GetMinimapZoneText()=='Dalaran') then
